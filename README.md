@@ -1,0 +1,2 @@
+# TRYHACKME
+notes for paths
