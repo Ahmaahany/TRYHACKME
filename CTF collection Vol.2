@@ -95,6 +95,13 @@ update reffere  value on /free_sub page to tryhackme.com
 
 Easter 10: THM{50rry_dud3}
 ------------------------------------------------------------------------------------------------------------
+Hint: Temper the html
+in submitting a dinner i changed the value to egg 
+dinner=egg&submit=submit
+and claim the flag:
+You found the secret menu, take the easter 11: THM{366y_b4k3y}
+easter 11: THM{366y_b4k3y}
+--------------------------------------------------------------------------------------------------------------
 AFTER Accessing jquery-9.1.2.js from source code we found a string in hex format --> 4561737465722031322069732054484d7b68316464336e5f6a355f66316c337d
 After decoding : 
 Easter 12 is THM{h1dd3n_j5_f1l3}
@@ -111,24 +118,45 @@ use this command to extract the photo from this file :
 sed -n 's/.*base64,\(.*\)".*/\1/p' page.html | base64 -d > easter14.png
 
 then we opened the photo and get ou flag 
+
 14 : THM{d1r3c7_3mb3d} 
+----------------------------------------------------------------------------------------------------------------
+after combinig Game1 Found that the word is Gamedover
+Good job on completing the puzzle, Easter 15: THM{ju57_4_64m3}
+
+
+Easter 15: THM{ju57_4_64m3}
+----------------------------------------------------------------------------------------------------------------
+BY Completing game2 BY this payload:
+
+button1=button1&submit=submit&button2=button2&submit=submit&button3=button3&submit=submit
+We retrieve our flag :
+Just temper the code and you are good to go. Easter 16: THM{73mp3r_7h3_h7ml}
+
+Easter 16: THM{73mp3r_7h3_h7ml}
 ----------------------------------------------------------------------------------------------------------------
 in source code:
 100010101100001011100110111010001100101011100100010000000110001001101110011101000100000010101000100100001001101011110110110101000110101010111110110101000110101010111110110101100110011011100000101111101100100001100110110001100110000011001000011001101111101
 after decoded with shifting 7 bits 
+
 Easter 17:THM{j5_j5_k3p_d3c0d3}
+----------------------------------------------------------------------------------------------------------
+Hint: Request header. Format is egg:Yes	
+That's it, you just need to say YESSSSSSSSSS. Easter 18: THM{70ny_r0ll_7h3_366}
+
+Easter 18:THM{70ny_r0ll_7h3_366}	
 -----------------------------------------------------------------------------------------------------------
-
-
-
 in source code after accessing (small.png) we found our 19 flag directly:
-Easter 19: THM{700_5m4ll_3yy}
 
+Easter 19: THM{700_5m4ll_3yy}
 -------------------------------------------------------------------------------------------------------------
 in source code :
-
 Hey! I got the easter 20 for you. I leave the credential for you to POST (username:DesKel, password:heIsDumb). Please, I beg you. Don't let him know.
+Hint:You need to POST the data instead of GET. Burp suite or curl might help.
+BY changing request method to POST and send USERNAME and PASSWORD AS this :username=DesKel&password=heIsDumb
 
+Okay, you pass, Easter 20: THM{17_w45_m3_4ll_4l0n6}
 
+Easter 20: THM{17_w45_m3_4ll_4l0n6}
 
 
